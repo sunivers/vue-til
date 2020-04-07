@@ -12,6 +12,9 @@ export default {
   name: "App",
   components: {
     HelloWorld
+  },
+  created() {
+    var a = 10;
   }
 };
 </script>
