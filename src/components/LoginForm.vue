@@ -2,7 +2,15 @@
 	<form @submit.prevent="submitForm">
 		<div>
 			<label for="username">id: </label>
-			<input id="username" type="text" v-model="username" />
+			<input
+				id="username"
+				type="text"
+				v-model="username"
+				:class="{ 'not-valid': username !== '' && !isUsernameValid }"
+			/>
+			<p class="error-text" v-if="username !== '' && !isUsernameValid">
+				올바른 메일주소가 아닙니다.
+			</p>
 		</div>
 		<div>
 			<label for="password">pw: </label>
@@ -59,4 +67,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.not-valid {
+	border: 1px solid red;
+}
+.error-text {
+	color: red;
+	margin: 0;
+	font-size: 12px;
+}
+</style>
