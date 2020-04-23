@@ -25,6 +25,7 @@
 
 <script>
 import { createPost } from '@/api/posts';
+import bus from '@/utils/bus';
 
 export default {
 	data() {
@@ -47,6 +48,7 @@ export default {
 					contents: this.contents,
 				});
 				console.log(response);
+				bus.$emit('show:toast', 'Post was created');
 				this.$router.push('/main');
 			} catch (error) {
 				console.log(error.response.data.message);

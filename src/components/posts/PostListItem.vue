@@ -16,6 +16,7 @@
 
 <script>
 import { deletePost } from '@/api/posts';
+import bus from '@/utils/bus';
 
 export default {
 	props: {
@@ -28,6 +29,7 @@ export default {
 		async deleteItem() {
 			if (confirm('You want to delete it?')) {
 				await deletePost(this.postItem._id);
+				bus.$emit('show:toast', 'Post was deleted');
 				this.$emit('refresh');
 			}
 		},
